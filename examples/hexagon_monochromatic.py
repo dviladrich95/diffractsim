@@ -1,13 +1,15 @@
 import diffractsim
-diffractsim.set_backend("CPU") #Change the string to "CUDA" to use GPU acceleration
+import os
+
+diffractsim.set_backend("CUDA") #Change the string to "CUDA" to use GPU acceleration
 
 from diffractsim import MonochromaticField, ApertureFromImage, mm, nm, cm
 
 F = MonochromaticField(
     wavelength=632.8 * nm, extent_x=18 * mm, extent_y=18 * mm, Nx=1024, Ny=1024
 )
-
-F.add(ApertureFromImage("./apertures/hexagon.jpg", image_size=(5.6 * mm, 5.6 * mm), simulation = F))
+hexagon_path = os.path.join("examples","apertures","hexagon.jpg")
+F.add(ApertureFromImage(hexagon_path, image_size=(5.6 * mm, 5.6 * mm), simulation = F))
 
 
 F.propagate(80*cm)
