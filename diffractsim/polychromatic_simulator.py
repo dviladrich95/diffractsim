@@ -95,7 +95,7 @@ class PolychromaticField:
 
         bar = progressbar.ProgressBar()
 
-        # We compute the pattern of each wavelength separately, and associate it to small spectrum interval dλ = (780- 380)/spectrum_divisions . We approximately the final colour
+        # We compute the pattern of each wavelength separately, and associate it to small spectrum interval dλ = (780- 380)/spectrum_divisions . We approximate the final colour
         # by summing the contribution of each small spectrum interval converting its intensity distribution to a RGB space.
         
 

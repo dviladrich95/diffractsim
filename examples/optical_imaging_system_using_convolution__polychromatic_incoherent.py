@@ -2,7 +2,7 @@ import diffractsim
 diffractsim.set_backend("CUDA")
 import numpy as np
 from diffractsim import PolychromaticField, ApertureFromImage, cf, mm, cm, CircularAperture
-
+import os
 """
 MPL 2.0 License
 
@@ -124,7 +124,9 @@ F = PolychromaticField(
     spectrum=2*M**2* cf.illuminant_d65, extent_x= 14 * um, extent_y= 14 * um, Nx=2048, Ny=2048,
     spectrum_size = 180, spectrum_divisions = 30
 )
-F.add(ApertureFromImage( "./apertures/horse.png",  image_size=(14 * um, 14 * um), simulation = F))
+
+horse_path = os.path.join("examples","apertures","horsse.png")
+F.add(ApertureFromImage( horse_path,  image_size=(14 * um, 14 * um), simulation = F))
 
 #propagate the light assuming the source is spatially incoherent
 rgb = get_colors_at_image_plane(F,radius = pupil_radius, zi = zi, z0 = z0, M = M)
